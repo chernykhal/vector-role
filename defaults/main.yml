@@ -1,0 +1,7 @@
+---
+vector_version: "0.22.3"
+clickhouse_user: aledcherry
+clickhouse_password: aledcherry
+clickhouse_host: 127.0.0.1
+
+

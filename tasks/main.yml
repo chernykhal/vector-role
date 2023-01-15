@@ -1,0 +1,26 @@
+---
+- name: Get Vector dis (yum)
+  import_tasks: download/yum.yml
+  when:
+    - ansible_pkg_mgr == 'yum'
+
+- name: Get Vector dis (dnf)
+  import_tasks: download/dnf.yml
+  when:
+    - ansible_pkg_mgr == 'dnf'
+
+- name: Install Vector packages
+  import_tasks: install/yum.yml
+  when:
+    - ansible_pkg_mgr == 'yum'
+
+- name: Install Vector packages
+  import_tasks: install/dnf.yml
+  when:
+    - ansible_pkg_mgr == 'dnf'
+
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
+
+- name: Deploy config Vector
+  import_tasks: configure.yml
